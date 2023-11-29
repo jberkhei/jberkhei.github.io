@@ -59,6 +59,7 @@ function openApp() {
 
     $(document).ready(function (){
 	// Usage
+	    console.log("ready");
 	checkIfAppInstalled('bushnellconnect://', 2000) // Example for Twitter
     	.then(isInstalled => {
         	if (isInstalled) {
