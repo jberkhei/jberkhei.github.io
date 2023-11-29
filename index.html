@@ -34,19 +34,14 @@ function checkIfAppInstalled(scheme, timeout) {
     	const sessionId = urlParams.get('SessionId');
 	const appUrl = sessionId ? 'bushnellconnect://?SessionId=${encodeURIComponent(sessionId)}' : "bushnellconnect://";
 	    console.log("ready");
-
-	checkIfAppInstalled(appUrl, 2000)
-    		.then(isInstalled => {
-        		if (isInstalled) {
-				//openApp(); 
-				console.log("openApp");
-        		} else {
-            			redirectToStore();
-				console.log("redirectToStore");
-        		}
-    		});
+	setTimeout(function () {
+    		if (new Date().valueOf() - now > 100) return;
+    		redirectToStore();
+	}, 25);
+	window.location = appUrl;
     });
 </script>
+	
 </head>
-	<body></body>
+<body></body>
 </html>
