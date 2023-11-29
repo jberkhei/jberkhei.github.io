@@ -1,0 +1,72 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<script>
+
+function redirectToStore(){
+        if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+            window.location.href = 'https://play.google.com/store/apps/details?id=com.bushnell.connect';
+        }else if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+            window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
+        }else{
+            window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
+        }
+}
+
+function checkIfAppInstalled(urlScheme, timeout) {
+    return new Promise((resolve, reject) => {
+        const start = Date.now();
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        const checkIfAppNotOpened = () => {
+            if (Date.now() - start < timeout + 500) {
+                // The app is likely not installed
+                resolve(false);
+            } else {
+                // The app might be installed
+                resolve(true);
+            }
+        };
+
+        iframe.onload = checkIfAppNotOpened;
+        window.setTimeout(checkIfAppNotOpened, timeout);
+
+        iframe.src = urlScheme; // URL scheme specific to the app
+    });
+}
+
+function openApp() {
+    // Parse the SessionId from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('SessionId');
+
+    if (sessionId) {
+        // Construct the URL for the mobile app with the SessionId
+        const appUrl = 'bushnellconnect://?SessionId=${encodeURIComponent(sessionId)}';
+
+        // Redirect to the app
+        window.location.href = appUrl;
+    } else {            
+	console.log("SessionId not found in the URL");    
+	window.location.href = 'bushnellconnect://';
+    }
+}
+
+    $(document).ready(function (){
+	// Usage
+	checkIfAppInstalled('bushnellconnect://', 2000) // Example for Twitter
+    	.then(isInstalled => {
+        	if (isInstalled) {
+			openApp();
+        	} else {
+            		redirectToStore();
+        	}
+    	});
+
+    });
+</script>
+</head>
+</html>
