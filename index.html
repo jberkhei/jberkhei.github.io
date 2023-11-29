@@ -31,10 +31,10 @@ function checkIfAppInstalled(urlScheme, timeout) {
             }
         };
 
-        iframe.onload = checkIfAppNotOpened;
-        window.setTimeout(checkIfAppNotOpened, timeout);
+        //iframe.onload = checkIfAppNotOpened;
+        //window.setTimeout(checkIfAppNotOpened, timeout);
 
-        iframe.src = urlScheme; // URL scheme specific to the app
+        //iframe.src = urlScheme; // URL scheme specific to the app
     });
 }
 
