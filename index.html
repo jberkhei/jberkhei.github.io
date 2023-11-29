@@ -24,8 +24,10 @@ function checkIfAppInstalled(urlScheme, timeout) {
         const checkIfAppNotOpened = () => {
             if (Date.now() - start < timeout + 500) {
                 // The app is likely not installed
+		    alert('false');
                 resolve(false);
             } else {
+		    alert('true');
                 // The app might be installed
                 resolve(true);
             }
