@@ -15,6 +15,7 @@ function redirectToStore(){
 }
 
 function checkIfAppIsInstalled(scheme, timeout) {
+				console.log("checkIfAppIsInstalled");
     return new Promise((resolve) => {
         let start = Date.now();
         window.location = scheme;
@@ -32,13 +33,16 @@ function checkIfAppIsInstalled(scheme, timeout) {
     	const urlParams = new URLSearchParams(window.location.search);
     	const sessionId = urlParams.get('SessionId');
 	const appUrl = sessionId ? 'bushnellconnect://?SessionId=${encodeURIComponent(sessionId)}' : "bushnellconnect://";
+	    console.log("ready");
 
 	checkIfAppInstalled(appUrl, 2000)
     		.then(isInstalled => {
         		if (isInstalled) {
-				//openApp();
+				//openApp(); 
+				console.log("openApp");
         		} else {
             			redirectToStore();
+				console.log("redirectToStore");
         		}
     		});
     });
