@@ -32,7 +32,7 @@ function checkIfAppInstalled(scheme, timeout) {
     $(document).ready(function (){	
     	const urlParams = new URLSearchParams(window.location.search);
     	const sessionId = urlParams.get('SessionId');
-	const appUrl = sessionId ? 'bushnellconnect://?SessionId=${encodeURIComponent(sessionId)}' : "bushnellconnect://";
+	const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "bushnellconnect://";
 	    console.log("ready");
 	setTimeout(function () {
     		if (new Date().valueOf() - now > 100) return;
