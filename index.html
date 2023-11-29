@@ -37,7 +37,7 @@ function checkIfAppInstalled(scheme, timeout) {
 	setTimeout(function () {
     		if (new Date().valueOf() - now > 100) return;
     		redirectToStore();
-	}, 25);
+	}, 5000);
 	window.location = appUrl;
     });
 </script>
