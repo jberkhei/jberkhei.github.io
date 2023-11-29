@@ -14,21 +14,6 @@ function redirectToStore(){
         }
 }
 
-function checkIfAppInstalled(scheme, timeout) {
-				console.log("checkIfAppInstalled");
-    return new Promise((resolve) => {
-        let start = Date.now();
-        window.location = scheme;
-        setTimeout(function() {
-            if (Date.now() - start < timeout + 200) {
-                resolve(false);
-            } else {
-                resolve(true);
-            }
-        }, timeout);
-    });
-}
-
     $(document).ready(function (){	
     	const urlParams = new URLSearchParams(window.location.search);
     	const sessionId = urlParams.get('SessionId');
