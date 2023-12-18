@@ -14,19 +14,20 @@ function redirectToStore(){
 	}
 }
 $(document).ready(function (){    
-	const urlParams = new URLSearchParams(window.location.search);
-	const sessionId = urlParams.get('SessionId');
-	const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "bushnellconnect://";
-	console.log("ready");
-	
-	const now = new Date().valueOf(); // Define 'now' here
-	
-	setTimeout(function () {
-	if (new Date().valueOf() - now > 100) return;
-	redirectToStore();
-	}, 5000);
-	window.location = appUrl;
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('SessionId');
+    const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "bushnellconnect://";
+    console.log("ready");
+
+    // Attempt to open the app immediately
+    window.location = appUrl;
+
+    // Set a timeout to redirect to the store after 5 seconds
+    setTimeout(function () {
+        redirectToStore();
+    }, 4000);
 });
+
 
 </script>
 	
