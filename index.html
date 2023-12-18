@@ -16,7 +16,7 @@ function redirectToStore(){
 $(document).ready(function (){    
     const urlParams = new URLSearchParams(window.location.search);
     const sessionId = urlParams.get('SessionId');
-    const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "bushnellconnect://";
+    const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "https://www.google.com"; //"bushnellconnect://";
     console.log("ready");
 
     // Attempt to open the app immediately
