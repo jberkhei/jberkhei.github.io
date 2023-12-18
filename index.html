@@ -5,26 +5,29 @@
 <script>
 
 function redirectToStore(){
-        if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
-            window.location.href = 'https://play.google.com/store/apps/details?id=com.bushnell.connect';
-        }else if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
-            window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
-        }else{
-            window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
-        }
+	if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+	    window.location.href = 'https://play.google.com/store/apps/details?id=com.bushnell.connect';
+	}else if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+	    window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
+	}else{
+	    window.location.href = 'https://apps.apple.com/us/app/bushnell-connect/id1588783774';
+	}
 }
-
-    $(document).ready(function (){	
-    	const urlParams = new URLSearchParams(window.location.search);
-    	const sessionId = urlParams.get('SessionId');
+$(document).ready(function (){    
+	const urlParams = new URLSearchParams(window.location.search);
+	const sessionId = urlParams.get('SessionId');
 	const appUrl = sessionId ? 'bushnellconnect://?SessionId='+sessionId : "bushnellconnect://";
-	    console.log("ready");
+	console.log("ready");
+	
+	const now = new Date().valueOf(); // Define 'now' here
+	
 	setTimeout(function () {
-    		if (new Date().valueOf() - now > 100) return;
-    		redirectToStore();
+	if (new Date().valueOf() - now > 100) return;
+	redirectToStore();
 	}, 5000);
 	window.location = appUrl;
-    });
+});
+
 </script>
 	
 </head>
