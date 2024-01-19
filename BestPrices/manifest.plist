@@ -17,13 +17,13 @@
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>com.hodges.job</string>
+                <string>com.hodges.bestpricesapp</string>
                 <key>bundle-version</key>
-                <string>1.7.2</string>
+                <string>2.6</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>Job Status</string>
+                <string>Best Prices</string>
             </dict>
         </dict>
     </array>
